@@ -9,13 +9,13 @@ import { VscSignOut } from "react-icons/vsc";
 import "./App.css";
 
 firebase.initializeApp({
-	apiKey: "AIzaSyAWoBomyTlXViHcgdSPismGaKsADqAWGiI",
+	apiKey: process.env.REACT_APP_API_KEY,
 	authDomain: "react-chat-fbg.firebaseapp.com",
 	databaseURL: "https://react-chat-fbg.firebaseio.com",
 	projectId: "react-chat-fbg",
 	storageBucket: "react-chat-fbg.appspot.com",
 	messagingSenderId: "476271889747",
-	appId: "1:476271889747:web:b3044620b0d7e0075ca5a6",
+	appId: process.env.REACT_APP_APP_ID,
 	measurementId: "G-7B1EYKXB0K",
 });
 
@@ -24,7 +24,6 @@ const firestore = firebase.firestore();
 
 function App() {
 	const [user] = useAuthState(auth);
-
 	return (
 		<div className="App">
 			<header>
