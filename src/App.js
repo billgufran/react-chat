@@ -69,12 +69,13 @@ function ChatRoom() {
 
 	const sendMessage = async e => {
 		e.preventDefault();
-		const {uid, photoURL} = auth.currentUser;
+		const {uid, photoURL, displayName} = auth.currentUser;
 		await messagesRef.add({
 			text: formValue,
 			createdAt: firebase.firestore.FieldValue.serverTimestamp(),
 			uid,
 			photoURL,
+			displayName,
 		});
 		setFormValue("");
 		recentChat.current.scrollIntoView({behavior: "smooth"});
@@ -85,24 +86,27 @@ function ChatRoom() {
 			<main>
 				{messages &&
 					messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
-
 				<span ref={recentChat}></span>
 			</main>
 			<form onSubmit={sendMessage}>
 				<input
 					value={formValue}
 					onChange={e => setFormValue(e.target.value)}
-					placeholder="..."
 				/>
-				<button type="submit" disabled={!formValue}>Send</button>
+				<button type="submit" disabled={!formValue}>
+					Send
+				</button>
 			</form>
 		</>
 	);
 }
 
 function ChatMessage(props) {
-	const {text, uid, photoURL} = props.message;
+	const {text, uid, photoURL, displayName, createdAt} = props.message;
 	const messageClass = uid === auth.currentUser.uid ? "sent" : "received";
+
+	const date = new Date(createdAt.seconds*1000);
+	console.log(date)
 
 	return (
 		<>
@@ -114,8 +118,9 @@ function ChatMessage(props) {
 					}
 					alt="avatar"
 				/>
-				<p>{text}</p>
+				<p id="chat-bubble">{text}</p>
 			</div>
+				<div>{displayName} · {date.getHours()}:{date.getMinutes()}</div>
 		</>
 	);
 }
