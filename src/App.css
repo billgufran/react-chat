@@ -107,6 +107,7 @@ form button {
   width: 20%;
   background: var(--main-color-blue);
   padding: 0 20px;
+  color: white;
 }
 
 form button:disabled {
