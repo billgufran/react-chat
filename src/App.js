@@ -4,6 +4,8 @@ import "firebase/firestore";
 import React, { useRef, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollectionData } from "react-firebase-hooks/firestore";
+import { FiSend } from "react-icons/fi";
+import { VscSignOut } from "react-icons/vsc";
 import "./App.css";
 
 firebase.initializeApp({
@@ -26,7 +28,7 @@ function App() {
 	return (
 		<div className="App">
 			<header>
-				<h1>ReactChat</h1>
+				<div className="logo">ReactChat</div>
 				<SignOut />
 			</header>
 			<section>{user ? <ChatRoom /> : <SignIn />}</section>
@@ -53,7 +55,7 @@ function SignOut() {
 	return (
 		auth.currentUser && (
 			<button className="sign-out" onClick={() => auth.signOut()}>
-				Sign Out
+				<VscSignOut />
 			</button>
 		)
 	);
@@ -77,6 +79,7 @@ function ChatRoom() {
 			photoURL,
 			displayName,
 		});
+
 		setFormValue("");
 		recentChat.current.scrollIntoView({behavior: "smooth"});
 	};
@@ -85,7 +88,7 @@ function ChatRoom() {
 		<>
 			<main>
 				{messages &&
-					messages.map(msg => <ChatMessage key={msg.id} message={msg} />)}
+					messages.map(msg => <ChatMessage key={msg.id} message={msg}/>)}
 				<span ref={recentChat}></span>
 			</main>
 			<form onSubmit={sendMessage}>
@@ -94,7 +97,7 @@ function ChatRoom() {
 					onChange={e => setFormValue(e.target.value)}
 				/>
 				<button type="submit" disabled={!formValue}>
-					Send
+					<FiSend />
 				</button>
 			</form>
 		</>
@@ -102,11 +105,8 @@ function ChatRoom() {
 }
 
 function ChatMessage(props) {
-	const {text, uid, photoURL, displayName, createdAt} = props.message;
+	const {text, uid, photoURL, displayName} = props.message;
 	const messageClass = uid === auth.currentUser.uid ? "sent" : "received";
-
-	const date = new Date(createdAt.seconds*1000);
-	console.log(date)
 
 	return (
 		<>
@@ -120,7 +120,7 @@ function ChatMessage(props) {
 				/>
 				<p id="chat-bubble">{text}</p>
 			</div>
-				<div>{displayName} · {date.getHours()}:{date.getMinutes()}</div>
+			<div>{displayName}</div>
 		</>
 	);
 }
