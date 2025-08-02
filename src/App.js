@@ -13,7 +13,7 @@ firebase.initializeApp({
 	authDomain: "react-chat-fbg.firebaseapp.com",
 	databaseURL: "https://react-chat-fbg.firebaseio.com",
 	projectId: "react-chat-fbg",
-	storageBucket: "react-chat-fbg.appspot.com",
+	storageBucket: "react-chat-fbg.firebasestorage.app",
 	messagingSenderId: "476271889747",
 	appId: process.env.REACT_APP_APP_ID,
 	measurementId: "G-7B1EYKXB0K",
