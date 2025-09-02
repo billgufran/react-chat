@@ -12,8 +12,10 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { LogOut } from "lucide-react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useRouter } from "next/navigation";
 
 export default function UserMenu() {
+  const router = useRouter();
   const [user, loading] = useAuthState(auth);
 
   if (loading || !user) return null;
@@ -52,7 +54,11 @@ export default function UserMenu() {
         <DropdownMenuSeparator />
         <DropdownMenuItem
           onClick={async () => {
+            try {
+              await fetch('/api/signout', { method: 'POST' });
+            } catch {}
             await firebaseSignOut();
+            router.refresh();
           }}
           className="gap-2"
         >

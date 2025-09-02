@@ -2,16 +2,27 @@
 
 import { Button } from "@/components/ui/button";
 import { LogIn, MessageSquareText } from "lucide-react";
-import { firebaseSignInWithPopup } from "@/lib/firebase";
+import { auth, firebaseSignInWithPopup } from "@/lib/firebase";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function SignInCard() {
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const signIn = async () => {
     setLoading(true);
     try {
       await firebaseSignInWithPopup();
+      const idToken = await auth.currentUser?.getIdToken(true);
+      if (idToken) {
+        await fetch('/api/session', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ idToken }),
+        });
+      }
+      router.refresh();
     } finally {
       setLoading(false);
     }
@@ -33,4 +44,3 @@ export default function SignInCard() {
     </div>
   );
 }
-
