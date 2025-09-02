@@ -1,0 +1,208 @@
+/* Base reset and fonts (from src/index.css) */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Chat styles (from src/App.css) */
+* {
+  --main-color-grey: #e2e2e4;
+  --main-color-purple: #6649b8;
+  --main-color-darkPurple: #38388f;
+  --main-color-blue: #0b93f6;
+}
+
+body {
+  background: #fdfdfd;
+  overflow: hidden;
+}
+
+h1 {
+  margin: 0;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--main-color-blue);
+}
+
+.App {
+  max-width: 728px;
+  margin: 0 auto;
+}
+
+.App header {
+  background: white;
+  height: 70px;
+  min-height: 50px;
+  position: fixed;
+  width: 100%;
+  max-width: 728px;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 99;
+  padding: 10px 15px;
+  box-sizing: border-box;
+}
+
+.App section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: rgb(255, 255, 255);
+}
+
+main {
+  padding: 10px;
+  height: 80vh;
+  margin: 10vh 0 10vh;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+}
+
+main::-webkit-scrollbar {
+  width: 0.25rem;
+}
+
+main::-webkit-scrollbar-track {
+  background: #8383831a;
+}
+
+main::-webkit-scrollbar-thumb {
+  background: var(--main-color-purple);
+}
+
+button {
+  background: none;
+  border: none;
+  color: black;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  font-size: 1.25rem;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+.sign-out {
+  margin: 0;
+  padding: 0;
+  color: black;
+  font-size: 2rem;
+  height: 31px;
+}
+
+form {
+  height: 60px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  max-width: 728px;
+  display: flex;
+}
+
+form button {
+  width: 20%;
+  background: var(--main-color-blue);
+  padding: 0 20px;
+  color: white;
+}
+
+form button:disabled {
+  background: gray;
+}
+
+input {
+  line-height: 1.5;
+  width: 100%;
+  font-size: 1rem;
+  background: var(--main-color-grey);
+  color: black;
+  outline: none;
+  border: none;
+  padding: 0 10px;
+}
+
+.sign-in {
+  border: var(--main-color-blue) 1.5px solid;
+  border-radius: 7px;
+  color: var(--main-color-blue);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+ul, li {
+  text-align: left;
+  list-style: none;
+}
+
+p {
+  max-width: 500px;
+  margin-bottom: 12px;
+  line-height: 24px;
+  padding: 10px 20px;
+  border-radius: 25px;
+  position: relative;
+  color: white;
+  text-align: center;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+}
+
+.sent {
+  flex-direction: row-reverse;
+}
+
+.sent p {
+  color: white;
+  background: var(--main-color-blue);
+  align-self: flex-end;
+  text-align: left;
+}
+
+.sent+div {
+  text-align: right;
+  margin-right: 5px;
+  color: gray;
+}
+
+.received p {
+  background: var(--main-color-grey);
+  color: black;
+  text-align: left;
+}
+
+.received+div {
+  text-align: left;
+  margin-left: 5px;
+  color: gray;
+}
+
+img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin: 2px 5px;
+}
+
