@@ -20,3 +20,4 @@ export const db: Firestore = getFirestore(app);
 export const googleProvider = new GoogleAuthProvider();
 export const firebaseSignInWithPopup = () => signInWithPopup(auth, googleProvider);
 export const firebaseSignOut = () => signOut(auth);
+
