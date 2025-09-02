@@ -11,15 +11,12 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { LogOut } from "lucide-react";
-import { useRouter } from "next/navigation";
 import { useAuthState } from "react-firebase-hooks/auth";
 
-export default function UserMenu({ userPresent }: { userPresent: boolean }) {
-  const router = useRouter();
-
+export default function UserMenu() {
   const [user, loading] = useAuthState(auth);
 
-  if (!userPresent) return null;
+  if (loading || !user) return null;
 
   const avatarUrl = user?.photoURL || "https://api.dicebear.com/7.x/identicon/svg?seed=react-chat";
 
@@ -56,8 +53,6 @@ export default function UserMenu({ userPresent }: { userPresent: boolean }) {
         <DropdownMenuItem
           onClick={async () => {
             await firebaseSignOut();
-            document.cookie = "rc-auth=; Max-Age=0; path=/";
-            router.refresh();
           }}
           className="gap-2"
         >

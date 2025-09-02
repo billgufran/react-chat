@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import { cookies } from 'next/headers';
 import UserMenu from '@/components/UserMenu';
 import { MessageSquareText } from 'lucide-react';
 
@@ -10,10 +9,7 @@ export const metadata: Metadata = {
   manifest: '/manifest.json',
 };
 
-export default async function RootLayout({ children }: { children: React.ReactNode }) {
-  const cookieStore = await cookies();
-  const userPresent = Boolean(cookieStore.get('rc-auth')?.value);
-
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <body className="bg-neutral-50 overflow-hidden antialiased text-neutral-900">
@@ -23,7 +19,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
               <MessageSquareText className="size-5 text-primary" />
               <span className="text-base font-semibold tracking-tight">ReactChat</span>
             </div>
-            <UserMenu userPresent={userPresent} />
+            <UserMenu />
           </header>
           <main className="flex h-[calc(100svh-64px)] flex-col bg-background">
             {children}

@@ -54,7 +54,9 @@ export default function ChatRoom() {
   return (
     <div className="flex h-full flex-col">
         {
-            process.env.FLAG_SHOW_CHATROOM_HEADER === "true" && <ChatroomHeader />
+            process.env.NEXT_PUBLIC_FLAG_SHOW_CHATROOM_HEADER === "true" && (
+                <ChatroomHeader />
+            )
         }
 
       <ScrollArea className="flex-1 px-3 py-4">
