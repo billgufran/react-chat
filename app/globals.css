@@ -1,16 +1,16 @@
+@import "tailwindcss";
+
 /* Base reset and fonts (from src/index.css) */
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
 /* Chat styles (from src/App.css) */
@@ -149,7 +149,8 @@ input {
   margin: 0 auto;
 }
 
-ul, li {
+ul,
+li {
   text-align: left;
   list-style: none;
 }
@@ -181,7 +182,7 @@ p {
   text-align: left;
 }
 
-.sent+div {
+.sent + div {
   text-align: right;
   margin-right: 5px;
   color: gray;
@@ -193,7 +194,7 @@ p {
   text-align: left;
 }
 
-.received+div {
+.received + div {
   text-align: left;
   margin-left: 5px;
   color: gray;
@@ -205,4 +206,3 @@ img {
   border-radius: 50%;
   margin: 2px 5px;
 }
-
