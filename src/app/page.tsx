@@ -1,9 +1,18 @@
-"use client";
-import dynamic from 'next/dynamic';
+import { cookies } from "next/headers";
+import ChatRoom from "@/components/ChatRoom";
+import SignInCard from "@/components/SignInCard";
 
-const ClientApp = dynamic(() => import('@/components/ClientApp'), { ssr: false });
+export default async function Page() {
+  const cookieStore = await cookies();
+  const isAuthed = Boolean(cookieStore.get("rc-auth")?.value);
 
-export default function Page() {
-  return <ClientApp />;
+  if (isAuthed) {
+    return <ChatRoom />;
+  }
+
+  return (
+    <div className="flex h-full items-center justify-center">
+      <SignInCard />
+    </div>
+  );
 }
-
