@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import { FiSend } from "react-icons/fi";
 import { VscSignOut } from "react-icons/vsc";
-import { auth, db, firebaseSignInWithPopup, firebaseSignOut } from "../lib/firebase";
+import { auth, db, firebaseSignInWithPopup, firebaseSignOut } from "@/lib/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useCollectionData } from "react-firebase-hooks/firestore";
 import {
@@ -117,3 +117,4 @@ function ChatMessage({ message }: { message: Message }) {
     </>
   );
 }
+
